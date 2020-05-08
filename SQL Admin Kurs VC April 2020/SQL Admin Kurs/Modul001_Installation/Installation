@@ -1,0 +1,112 @@
+/*
+
+seit SQL 2016 best practice
+
+
+Pfade
+
+DB besteht aus mind. 2 Dateien: .mdf (Daten)    .ldf (Logfile)
+
+
+jegliches Schreiben kommt immer zuerst ins LDF
+der Zugriff auf die mdf ist im Prinzip random
+
+Best Practice: Trenne Log von Daten physikalisch (mehr HDDs)
+
+
+--Binärkram: Installationsdateien auf C ist ok!!
+
+
+
+besondere DB=Tempdb  (Mülleimer Zwischenablage)
+soll schnell sein: eig HDD (ldf und mdf getrennt)
+max 8 Dateien, sonst soviele wie Kerne
+
+
+Security:
+NT Auth !!
+gemischte Auth (NT + SQL Login)
+	--> SA (alle Rechte) --> komplexes Kennwort: mind 14 Zeichen 
+
+NT Admins sind nicht mehr SQL Admins
+
+
+
+
+Filestream: 
+keine Bilder zb in die mdf Datei
+stattdessen \\server\SQLInstanz\DB\Tabelle
+-->Stichwort Filetable
+
+
+Sprachsortierung
+A bis Z
+Physiklaische sortierete ABlage nach Schema der Spracheinstellung
+LAtin1 Gen_CI AS
+
+
+
+SEIT 2019: +
+RAM maximale Grenze für SQL Server( OS berücksichtigen ca 3 GB)
+früher : 2,1 PB
+
+CPU (MAXDOP)
+Anzahl der CPUS --Setzt aber das Limit auf 8 Kerne
+früher war die EInstellung : 0 
+
+
+
+--HV-SQL2
+Kontrolle vor Installation
+
+C:\_SQLDB
+C:\_BACKUP
+
+
+Instanzen
+
+STD Instanz Port 1433
+weitere Inst (benannte Instanzen) anderer Port:  ?????
+--> dynamisch vergeben
+
+Standardinstanz: Server
+benann. nstanz:  Server\Instanzname
+
+Dienstkonten
+Agent: Jobs Zeitpläne Email--> Netzwerkzugriffe!!
+DB Engine: = SQL Server
+Volltextsuche: Volltextkatalog..egal
+Browserdienst... egal
+
+
+NT Service\Konten  verwaltetete Dienstkonten
+--Kennwortrichtlinien
+--Kennwortändeungen vor Ablauf durch OS
+--lokale Konten-- Computerkonte
+--es gehen auch Userkonten
+
+
+
+-benannte EEEEnstanz
+Brwoserdenst verwendet dazu Port 1434 UDP
+Broserdenst erlärt dem Clent we er zugrefen soll
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
